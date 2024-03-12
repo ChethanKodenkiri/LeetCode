@@ -19,6 +19,7 @@
   @param {ListNode} l1
   @param {ListNode} l2
   @return {ListNode}
+*/
 
 var addTwoNumbers = function(l1, l2, carry =0) {
     if(!l1&&!l2&&!carry) return null;
@@ -34,7 +35,7 @@ var addTwoNumbers = function(l1, l2, carry =0) {
     return newNode
     };
 
-*/
+
 
 // To run in a local editor use the below code
 
