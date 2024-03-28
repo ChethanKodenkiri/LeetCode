@@ -35,53 +35,59 @@
 // s consists of English letters (lower-case and upper-case), ',' and '.'.
 // 1 <= numRows <= 1000
 
-var convert = function(s, numRows) {
-    if (numRows === 1) {
-        return s;
-    }
+// var convert = function(s, numRows) {
+//     if (numRows === 1) {
+//         return s;
+//     }
 
-    console.log("String is  "+s)
-    let result = "";
-    const n = s.length;
-    const cycleLen = 2 * numRows - 2;
-    console.log("cycleLen "+cycleLen)
-    for (let i = 0; i < numRows; i++) {
-        console.log("I is "+i)
-        for (let j = 0; j + i < n; j += cycleLen) {
-            result += s[i+j];
-            console.log("J is "+j)
-            console.log("Result for 2nd for loop "+result)
-            if (i !== 0 && i !== numRows - 1 && j + cycleLen - i < n) {
-                console.log("j + cycleLen - i is "+ parseInt(j + cycleLen - i) )
-                result += s[j + cycleLen - i];
-                console.log("Result fot IF "+result)
-            }
-        }
-    }
+//     console.log("String is  "+s)
+//     let result = "";
+//     const n = s.length;
+//     const cycleLen = 2 * numRows - 2;
+//     console.log("cycleLen "+cycleLen)
+//     for (let i = 0; i < numRows; i++) {
+//         console.log("I is "+i)
+//         for (let j = 0; j + i < n; j += cycleLen) {
+//             result += s[i+j];
+//             console.log("J is "+j)
+//             console.log("Result for 2nd for loop "+result)
+//             if (i !== 0 && i !== numRows - 1 && j + cycleLen - i < n) {
+//                 console.log("j + cycleLen - i is "+ parseInt(j + cycleLen - i) )
+//                 result += s[j + cycleLen - i];
+//                 console.log("Result fot IF "+result)
+//             }
+//         }
+//     }
 
-    return result;
-};
+//     return result;
+// };
 
-convert("PAYPALISHIRING",3);
+// convert("PAYPALISHIRING",3);
 
 //Second code
 
-// function convert(s, numRows) {
-//     if (numRows === 1) return s;
-    
-//     const rows = new Array(numRows).fill('');
-//     let direction = 1; // 1 for down, -1 for up
-//     let currentRow = 0;
+function convert(s,numRows){
+    if(numRows ===1 || s.length <numRows){
+        return s;
+    }
 
-//     for (const char of s) {
-//         rows[currentRow] += char;
-//         if (currentRow === 0) {
-//             direction = 1;
-//         } else if (currentRow === numRows - 1) {
-//             direction = -1;
-//         }
-//         currentRow += direction;
-//     }
+    let charArray =  new Array(numRows).fill('');
+    let direction = false;
+    let count =0;
 
-//     return rows.join('');
-// }
+    for(let char of s){
+        charArray[count] = charArray[count]+char;
+
+        if(count === 0 || count >= numRows-1){
+            direction =! direction
+        }
+        direction ? count++ : count--;
+
+    }
+
+    return charArray.join('')
+
+}
+
+
+console.log(convert("PAYPALISHIRING",3));
