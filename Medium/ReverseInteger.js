@@ -29,5 +29,41 @@
  * @return {number}
  */
 var reverse = function(x) {
+
+    let result = parseInt(x.toString().split('').reverse().join(''));
     
+    if(result > ((2**31)-1) || result < -(2**31)){
+        return 0;
+    }
+
+    if(x<0){
+        return -result;
+    }else{
+        return result;
+    }
+
 };
+
+console.log(reverse(1563847412))
+
+
+//Top Answer
+
+var reverse = function(x) {
+    let lessThan0 = x < 0
+    if (lessThan0) {
+      x = -x
+    }
+    let arr = []
+    while (x > 0) {
+      arr.push(x%10)
+      x = Math.floor(x/10)
+    }
+  
+    let result = Number(arr.join(''))
+    if (lessThan0) result = -result
+  
+    if (result > 2**31 - 1 || result < -(2**31)) return 0
+  
+    return result
+  };
