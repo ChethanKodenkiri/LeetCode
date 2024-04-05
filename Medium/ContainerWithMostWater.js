@@ -33,3 +33,29 @@ n == height.length
 0 <= height[i] <= 104
 
 */
+
+
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+
+
+var maxArea = function(height) {
+   let result=0,l=0,r=height.length-1
+   while(l<r){
+    let area = (r-l)* Math.min(height[r],height[l]);
+    result = Math.max(area,result)
+
+    if(height[r]>height[l]){
+        l+=1
+    }else{
+        r-=1
+    }
+   }
+   return result
+
+};
+
+console.log(maxArea([1,2,1]))
