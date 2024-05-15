@@ -37,7 +37,7 @@ digits[i] is a digit in the range ['2', '9'].
  * @return {string[]}
  */
 var letterCombinations = function(digits) {
-    if(digits.length === 0) return ['']
+    if(digits.length === 0) return []
     const queue = ['']
     const map={'2':'abc',
             '3':'def',
@@ -66,7 +66,7 @@ var letterCombinations = function(digits) {
 //BackTracking 
 
 var letterCombinationsBackTrack= function(digits) {
-    if(digits.length === 0) return ['']
+    if(digits.length === 0) return []
     const queue = []
     const map={'2':'abc',
             '3':'def',
