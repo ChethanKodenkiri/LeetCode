@@ -66,4 +66,4 @@ while(rev!==null){
     rev= rev.next
 }
 
-console.log(result+"-> null")
+console.log(result+"null")
