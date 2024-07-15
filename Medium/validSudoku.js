@@ -58,6 +58,7 @@ const isValidSudoku = function(board){
     let col = new Array(9).fill().map(()=> new Set());
     let row = new Array(9).fill().map(()=>new Set());
     let squr= new Array(9).fill().map(()=> new Set())
+    console.log(col)
 
     for( let r=0;r<9;r++){
         for(let c=0;c<9;c++){
@@ -69,12 +70,15 @@ const isValidSudoku = function(board){
             row[r].add(board[r][c])
             squr[Math.floor(r/3)*3+Math.floor(c/3)].add(board[r][c])
         }
+       
+
     }
+    console.log(col)
     return true
 }
 
 const board = 
-[["8","3",".",".","7",".",".",".","."]
+[["5","3",".",".","7",".",".",".","."]
 ,["6",".",".","1","9","5",".",".","."]
 ,[".","9","8",".",".",".",".","6","."]
 ,["8",".",".",".","6",".",".",".","3"]
