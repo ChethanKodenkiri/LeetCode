@@ -31,7 +31,7 @@ n == height.length
  * @return {number}
  */
 var trap = function(height) {
-  //  let [left,right]=[0,height.length-1]
+ 
     let left =0,right=height.length-1
     let [leftMax,rightMax]=[height[right],height[left]]
     let result=0
