@@ -68,12 +68,11 @@ All the values of position are unique.
 var carFleet = function(target, position, speed) {
    let car =  position.map((pos,i)=>[pos,speed[i]]).sort((a,b)=>b[0]-a[0]);
   let [fleet,lastTime]=[0,0];
-   console.log(car)
    for(let [pos,spd] of car){
-    let time = (target-pos)/spd
+    const time = (target-pos)/spd
 
     if(time>lastTime){
-        fleet++;
+        fleet=fleet+1;
         lastTime=time
     }
    }
