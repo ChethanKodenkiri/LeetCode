@@ -27,11 +27,29 @@ Constraints:
 0 <= heights[i] <= 104
 */
 
-
+'use strict';
 /**
  * @param {number[]} heights
  * @return {number}
  */
 var largestRectangleArea = function(heights) {
-    
+    let stack=[];
+    let maxArea=0;
+
+    for(let i=0;i<heights.length;i++){
+        let start =i
+        while(stack.length && stack[stack.length-1][1]>heights[i]){
+            let [index,height] = stack.pop()
+            maxArea= Math.max(maxArea,height*(i-index))
+            start=index
+        }
+        stack.push([start,heights[i]]);
+    }
+    for(let [index,height]of stack){
+        maxArea=Math.max(maxArea,height*(heights.length-index))
+    }
+    return maxArea
+
 };
+
+console.log(largestRectangleArea([2,4]))
