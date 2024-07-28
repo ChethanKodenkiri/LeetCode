@@ -39,5 +39,25 @@ piles.length <= h <= 109
  * @return {number}
  */
 var minEatingSpeed = function(piles, h) {
-    
+
+    let[strat,end] = [1,Math.max(...piles)]
+    let result = end
+    while(strat<=end){
+        let k= Math.floor((strat+end)/2)
+   
+        let hour=0
+        for(let pile of piles){
+            hour +=Math.ceil(pile/k)
+        }
+        if(hour<=h){
+            result=Math.min(result,k)
+            end = k-1
+        }else{
+            strat = k+1
+        }
+    }
+    return result
+
 };
+
+console.log(minEatingSpeed([3,6,7,11],8))
