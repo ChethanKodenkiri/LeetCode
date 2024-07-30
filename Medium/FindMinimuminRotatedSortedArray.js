@@ -51,8 +51,46 @@ nums is sorted and rotated between 1 and n times.
  * @param {number[]} nums
  * @return {number}
  */
+
+
+// Using Binary Search algo
+
 var findMin = function(nums) {
-    return Math.min(...nums)
+    let [start,end] = [0,nums.length-1]
+    let result= nums[0]
+
+    while(start<=end){
+        if(nums[start]<nums[end]){
+            result=Math.min(result,nums[start])
+            break
+        }
+
+        let middle = Math.floor((start+end)/2)
+        result =Math.min(result,nums[middle])
+        if(nums[middle]>=nums[start]){
+            start=middle+1
+        }else{
+            end=middle-1
+        }
+    }
+    return result
 };
 
-console.log(findMin([4,5,6,7,0,1,2]))
+
+//Simple solution
+
+var findMins = function(nums) {
+    let lastVlaue  = nums[nums.length-1]
+    for(let start = nums.length-2;start>=0;start--){
+        if(nums[start]>lastVlaue){
+            return nums[start+1]
+        }
+    }
+    return nums[0]
+}
+
+//JS specific code
+var findMinsJS = function(nums) {
+    return Math.min(...nums)
+}
+console.log(findMins([3,4,5,1,2]))
